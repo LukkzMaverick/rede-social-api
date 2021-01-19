@@ -7,8 +7,14 @@ module.exports = app => {
     app.use(express.json())
     app.use(bodyParser.urlencoded({extended:true}));
     app.use(bodyParser.json());  
-    app.get('/', (req, res) => {
-        res.send({res: 'teste'})
-    })
+    app.use('/auth', require('./auth'))
+    app.use('/dislike', require('./dislike'))
+    app.use('/education', require('./education'))
+    app.use('/friends', require('./friendship'))
+    app.use('/like', require('./like'))
+    app.use('/post', require('./post'))
+    app.use('/topic', require('./topic'))
+    app.use('/user', require('./user'))
+
     
 }
