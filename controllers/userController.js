@@ -1,5 +1,7 @@
+const { validationResult } = require("express-validator")
 const MSGS = require("../messages")
 const User = require("../models/user")
+const bcrypt = require('bcrypt');
 
 module.exports = {
     async create(req, res) {
@@ -137,10 +139,6 @@ module.exports = {
             res.status(500).send({ "error": MSGS.GENERIC_ERROR })
         }
     }
-
-
-
-
 }
 
 
