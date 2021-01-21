@@ -10,7 +10,7 @@ module.exports = {
         if (!errors.isEmpty()) {
           return res.status(400).json({ errors: errors.array() })
         }
-        const jwtSecret = process.env.jwtSecret || config.get('jwtSecret')
+        const JWT_SECRET = process.env.JWT_SECRET 
         const { email, password } = req.body
         try{
             let user = await User.findOne({ email }).select('id password email name')
@@ -27,7 +27,7 @@ module.exports = {
                           name: user.name
                         }
                     }
-                    jwt.sign( payload, jwtSecret, { expiresIn: '5 days' },
+                    jwt.sign( payload, JWT_SECRET, { expiresIn: '5 days' },
                         (err, token) => {
                           if (err) throw err;
                           payload.token = token
