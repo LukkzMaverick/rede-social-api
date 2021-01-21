@@ -20,7 +20,6 @@ module.exports = {
                 usuario.password = await bcrypt.hash(password, salt);
                 await usuario.save()
                 if (usuario.id) {
-                    send_email(usuario)
                     res.json(usuario);
                 }
             }
