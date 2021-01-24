@@ -4,7 +4,7 @@ const auth = require('../middleaware/auth')
 
 const router = Router()
 
-router.post('/',auth, userController.getFriendship)
+router.get('/',auth, userController.getFriendship)
 router.post('/',auth, userController.newFriendship)
 router.delete('/',auth, userController.deleteFriendship)
 

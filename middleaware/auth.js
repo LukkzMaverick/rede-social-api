@@ -2,13 +2,13 @@ const jwt = require('jsonwebtoken');
 const MSGS = require('../messages')
 
 module.exports = function (req, res, next) {
-  const token = request.header('x-auth-token')
+  const token = req.header('x-auth-token')
     if(!token){
-        return response.status(401).json({errors: [{msg: MESSAGES.WITHOUT_TOKEN}]})
+        return res.status(401).json({errors: [{msg: MSGS.WITHOUT_TOKEN}]})
     }
 
   try {
-    jwt.verify(token, JWT_SECRET, (error, decoded) => {
+    jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
       if (error) {
         return res.status(401).json({ msg: MSGS.INVALID_TOKEN });
       }
